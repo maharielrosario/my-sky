@@ -1,0 +1,17 @@
+{
+    "eslint.format.enable": true,
+    "editor.formatOnSave": true,
+    "eslint.run": "onSave",
+    "eslint.validate": [
+    "javascript",
+    "html",
+    "typescript"
+    ],
+    "eslint.options": {
+        "extensions": [".ts", ".html"]
+      },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": false
+    },
+}   
