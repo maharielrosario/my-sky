@@ -1,28 +1,54 @@
+.container {
+  background-image: url("https://images.pexels.com/photos/1046532/pexels-photo-1046532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-size: 100vw 60vh;
+}
 .cities-container {
   align-items: center;
-  background: rgb(255, 80, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 80, 0, 1) 0%,
-    rgba(38, 172, 197, 1) 60%
-  );
+  backdrop-filter: blur(3px);
   display: flex;
+  flex-wrap: wrap;
   height: 40vh;
   justify-content: space-evenly;
+}
+.city-container {
+  align-items: center;
+  display: flex;
+}
 
-  .city-container {
-    align-items: center;
-    display: flex;
+.city-image {
+  border-radius: 100px;
+  height: 150px;
+  width: 150px;
+}
+
+.city-details {
+  color: #fff;
+  margin-left: 16px;
+
+  .city-name {
+    font-size: 1.4rem;
   }
-
-  .city-image {
-    border-radius: 100px;
-    height: 150px;
-    width: 150px;
+  .city-temperature {
+    font-size: 2rem;
   }
+}
 
-  .city-details {
-    margin-left: 16px;
+.search-container {
+  align-items: center;
+  display: flex;
+  height: 20vh;
+  justify-content: center;
+  .search-input {
+    background-color: #90060652;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.5rem;
+    height: 50px;
+  }
+  .search-input::placeholder {
+    color: #fff;
+    text-align: center;
   }
 }
 
