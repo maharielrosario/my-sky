@@ -1,0 +1,31 @@
+.cities-container {
+  align-items: center;
+  background: rgb(255, 80, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 80, 0, 1) 0%,
+    rgba(38, 172, 197, 1) 60%
+  );
+  display: flex;
+  height: 40vh;
+  justify-content: space-evenly;
+
+  .city-container {
+    align-items: center;
+    display: flex;
+  }
+
+  .city-image {
+    border-radius: 100px;
+    height: 150px;
+    width: 150px;
+  }
+
+  .city-details {
+    margin-left: 16px;
+  }
+}
+
+.is-inline-block {
+  display: inline-block;
+}
