@@ -4,7 +4,8 @@
     "projects/**/*",
     "package.json",
     "package-lock.json",
-    "node_modules"
+    "node_modules",
+    "*.code-workspace"
   ],
   "overrides": [
     {
@@ -20,8 +21,8 @@
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint",
-        "prettier/recommended"
+        "prettier",
+        "prettier/@typescript-eslint"
       ],
       "rules": {
         "@angular-eslint/component-selector": [
@@ -47,7 +48,8 @@
       "plugins": ["html"],
       "extends": [
         "plugin:@typescript-eslint/recommended",
-        "prettier/recommended"
+        "prettier",
+        "prettier/@typescript-eslint"
       ],
       "rules": {}
     }
