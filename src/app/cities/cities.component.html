@@ -1,5 +1,5 @@
 <main class="container">
-  <section class="cities-container">
+  <section *ngIf="cityWeatherDetails" class="cities-container">
     <div class="city-container">
       <div class="city-image-container is-inline-block">
         <img
@@ -9,83 +9,16 @@
         />
       </div>
       <div class="city-details is-inline-block">
-        <p class="city-name">New York</p>
-        <p class="city-weather">Cloudy</p>
-        <p class="city-temperature-container">
-          <span class="city-temperature">25</span>
-          <span class="city-temperature-scale">F</span
-          ><span class="city-temperature-degree">&deg;</span>
+        <p class="city-name">
+          {{ cityWeatherDetails.cityName }},
+          {{ cityWeatherDetails.countryCode }}
         </p>
-      </div>
-    </div>
-    <div class="city-container">
-      <div class="city-image-container is-inline-block">
-        <img
-          class="city-image"
-          src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
-          alt="dogww"
-        />
-      </div>
-      <div class="city-details is-inline-block">
-        <p class="city-name">New York</p>
-        <p class="city-weather">Cloudy</p>
-        <p class="city-temperature-container">
-          <span class="city-temperature">25</span>
-          <span class="city-temperature-scale">F</span
-          ><span class="city-temperature-degree">&deg;</span>
+        <p class="city-weather">
+          {{ cityWeatherDetails?.weather?.description }}
         </p>
-      </div>
-    </div>
-    <div class="city-container">
-      <div class="city-image-container is-inline-block">
-        <img
-          class="city-image"
-          src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
-          alt="dogww"
-        />
-      </div>
-      <div class="city-details is-inline-block">
-        <p class="city-name">New York</p>
-        <p class="city-weather">Cloudy</p>
         <p class="city-temperature-container">
-          <span class="city-temperature">25</span>
-          <span class="city-temperature-scale">F</span
-          ><span class="city-temperature-degree">&deg;</span>
-        </p>
-      </div>
-    </div>
-    <div class="city-container">
-      <div class="city-image-container is-inline-block">
-        <img
-          class="city-image"
-          src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
-          alt="dogww"
-        />
-      </div>
-      <div class="city-details is-inline-block">
-        <p class="city-name">New York</p>
-        <p class="city-weather">Cloudy</p>
-        <p class="city-temperature-container">
-          <span class="city-temperature">25</span>
-          <span class="city-temperature-scale">F</span
-          ><span class="city-temperature-degree">&deg;</span>
-        </p>
-      </div>
-    </div>
-    <div class="city-container">
-      <div class="city-image-container is-inline-block">
-        <img
-          class="city-image"
-          src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
-          alt="dogww"
-        />
-      </div>
-      <div class="city-details is-inline-block">
-        <p class="city-name">New York</p>
-        <p class="city-weather">Cloudy</p>
-        <p class="city-temperature-container">
-          <span class="city-temperature">25</span>
-          <span class="city-temperature-scale">F</span
+          <span class="city-temperature"> {{ cityWeatherDetails?.temp }} </span>
+          <span class="city-temperature-scale"> </span
           ><span class="city-temperature-degree">&deg;</span>
         </p>
       </div>
@@ -93,12 +26,19 @@
   </section>
   <div class="search-container">
     <input
+      #searchInput
       type="text"
       class="search-input"
       name="search"
       id=""
       placeholder="Search your favorite city"
     />
-    <button type="button" class="enter-button">Enter</button>
+    <button
+      type="button"
+      class="enter-button"
+      (click)="getWeather(searchInput.value)"
+    >
+      Enter
+    </button>
   </div>
 </main>
