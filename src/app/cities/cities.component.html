@@ -1,4 +1,7 @@
 <main class="container">
+  <h1 *ngIf="!cityWeatherDetails" class="welcome-msg">
+    Welcome to {{ appName }}
+  </h1>
   <section *ngIf="cityWeatherDetails" class="cities-container">
     <div class="city-container">
       <div class="city-image-container is-inline-block">

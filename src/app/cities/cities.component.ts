@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { normalizeInput } from '../util';
 import { CityWeatherData } from '../interfaces';
-
 @Component({
   selector: 'app-cities',
   templateUrl: './cities.component.html',
   styleUrls: ['./cities.component.scss'],
 })
 export class CitiesComponent {
+  @Input() appName: string;
   cityWeatherDetails: CityWeatherData;
   constructor(private weatherService: WeatherService) {}
-
   getWeather(inputValue: string): void {
     const { normalizedInputValue, inputType } = normalizeInput(inputValue);
     this.weatherService
