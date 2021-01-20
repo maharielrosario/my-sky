@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { normalizeInput } from '../util';
-import { CityWeatherData } from '../interfaces';
+import { CityWeatherData, WeatherData, HTTPErrorData } from '../interfaces';
 @Component({
   selector: 'app-cities',
   templateUrl: './cities.component.html',
@@ -10,12 +10,12 @@ import { CityWeatherData } from '../interfaces';
 export class CitiesComponent {
   @Input() appName: string;
   cityWeatherDetails: CityWeatherData;
+  error: string;
   constructor(private weatherService: WeatherService) {}
   getWeather(inputValue: string): void {
     const { normalizedInputValue, inputType } = normalizeInput(inputValue);
-    this.weatherService
-      .getWeather(normalizedInputValue, inputType)
-      .subscribe((response) => {
+    this.weatherService.getWeather(normalizedInputValue, inputType).subscribe(
+      (response: WeatherData) => {
         const { data: cities } = response;
         let matchingCity: CityWeatherData;
         cities.filter((city) => {
@@ -30,6 +30,10 @@ export class CitiesComponent {
         });
         this.cityWeatherDetails = matchingCity;
         console.log(this.cityWeatherDetails);
-      });
+      },
+      (error: HTTPErrorData) => {
+        this.error = error.message;
+      }
+    );
   }
 }

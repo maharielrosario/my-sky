@@ -45,3 +45,19 @@ export interface CityWeatherData {
   elevAngle: number;
   appTemp: number;
 }
+
+export interface HTTPErrorData {
+  headers: {
+    normalizedNames: Record<string, unknown>;
+    lazyUpdate: null;
+  };
+  status: number;
+  statusText: string;
+  url: string;
+  ok: boolean;
+  name: string;
+  message: string;
+  error: {
+    error: string;
+  };
+}

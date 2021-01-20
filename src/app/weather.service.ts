@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { API_KEY, API_ROOT_URL } from '../../private';
-import { WeatherData } from './interfaces';
-import { map } from 'rxjs/operators';
-
+import { WeatherData, HTTPErrorData } from './interfaces';
+import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
   constructor(private http: HttpClient) {}
+
+  handleError(error: HttpErrorResponse): Observable<HTTPErrorData> {
+    return throwError(error);
+  }
 
   convertToCamelCase(payload: WeatherData): WeatherData {
     const makeCamelCase = (s: string): string =>
@@ -30,7 +33,10 @@ export class WeatherService {
     return payload;
   }
 
-  getWeather(inputValue: string, inputType: string): Observable<WeatherData> {
+  getWeather(
+    inputValue: string,
+    inputType: string
+  ): Observable<WeatherData | HTTPErrorData> {
     let fullAPIUrl: string;
     if (inputType === 'string') {
       fullAPIUrl = `${API_ROOT_URL}city=${inputValue}&key=${API_KEY}`;
@@ -41,7 +47,8 @@ export class WeatherService {
       map((resp) => {
         const normalizedPayload = this.convertToCamelCase(resp);
         return normalizedPayload;
-      })
+      }),
+      catchError((error) => this.handleError(error))
     );
   }
 }
