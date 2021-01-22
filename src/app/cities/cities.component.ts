@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { normalizeInput } from '../util';
+import { determineInputType, replaceSpacesForApi } from '../util';
 import { CityWeatherData, WeatherData, HTTPErrorData } from '../interfaces';
 @Component({
   selector: 'app-cities',
@@ -9,31 +9,33 @@ import { CityWeatherData, WeatherData, HTTPErrorData } from '../interfaces';
 })
 export class CitiesComponent {
   @Input() appName: string;
-  cityWeatherDetails: CityWeatherData;
+  @Input() searchValue = '';
+  weatherData: CityWeatherData;
   error: string;
   constructor(private weatherService: WeatherService) {}
-  getWeather(inputValue: string): void {
-    const { normalizedInputValue, inputType } = normalizeInput(inputValue);
-    this.weatherService.getWeather(normalizedInputValue, inputType).subscribe(
-      (response: WeatherData) => {
-        const { data: cities } = response;
-        let matchingCity: CityWeatherData;
-        cities.filter((city) => {
-          const normalizedCityName = city.cityName.toLowerCase();
-          if (
-            (inputType === 'string' &&
-              normalizedCityName === normalizedInputValue) ||
-            inputType === 'number'
-          ) {
-            matchingCity = city;
-          }
-        });
-        this.cityWeatherDetails = matchingCity;
-        console.log(this.cityWeatherDetails);
-      },
-      (error: HTTPErrorData) => {
-        this.error = error.message;
-      }
-    );
+  getWeather(): void {
+    if (this.error) {
+      this.error = '';
+    }
+    if (this.searchValue) {
+      const apiInputValue = replaceSpacesForApi(this.searchValue);
+      const inputType = determineInputType(this.searchValue);
+      this.weatherService.getWeather(apiInputValue, inputType).subscribe(
+        (response: WeatherData) => {
+          const { data } = response;
+          this.weatherData = data[0];
+          this.searchValue = '';
+          console.log(this.weatherData);
+        },
+        (error: HTTPErrorData) => {
+          this.error = error.message;
+        }
+      );
+    } else {
+      this.error = 'No city entered';
+    }
+  }
+  updateSearchValue(newSearchValue: string): void {
+    this.searchValue = newSearchValue;
   }
 }

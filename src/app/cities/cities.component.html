@@ -1,8 +1,6 @@
 <main class="container">
-  <h1 *ngIf="!cityWeatherDetails" class="welcome-msg">
-    Welcome to {{ appName }}
-  </h1>
-  <section *ngIf="cityWeatherDetails" class="cities-container">
+  <h1 *ngIf="!weatherData" class="welcome-msg">Welcome to {{ appName }}</h1>
+  <section *ngIf="weatherData" class="cities-container">
     <div class="city-container">
       <div class="city-image-container is-inline-block">
         <img
@@ -13,14 +11,14 @@
       </div>
       <div class="city-details is-inline-block">
         <p class="city-name">
-          {{ cityWeatherDetails.cityName }},
-          {{ cityWeatherDetails.countryCode }}
+          {{ weatherData.cityName }}, {{ weatherData.stateCode }},
+          {{ weatherData.countryCode }}
         </p>
         <p class="city-weather">
-          {{ cityWeatherDetails?.weather?.description }}
+          {{ weatherData.weather?.description }}
         </p>
         <p class="city-temperature-container">
-          <span class="city-temperature"> {{ cityWeatherDetails?.temp }} </span>
+          <span class="city-temperature"> {{ weatherData.temp }} </span>
           <span class="city-temperature-scale"> </span
           ><span class="city-temperature-degree">&deg;</span>
         </p>
@@ -28,6 +26,9 @@
     </div>
   </section>
   <div class="search-container">
+    <p *ngIf="error === 'No city entered'" class="error-message">
+      Please enter a city
+    </p>
     <input
       #searchInput
       type="text"
@@ -35,12 +36,10 @@
       name="search"
       id=""
       placeholder="Search your favorite city"
+      [value]="searchValue"
+      (keyup)="updateSearchValue(searchInput.value)"
     />
-    <button
-      type="button"
-      class="enter-button"
-      (click)="getWeather(searchInput.value)"
-    >
+    <button type="button" class="enter-button" (click)="getWeather()">
       Enter
     </button>
   </div>

@@ -56,8 +56,17 @@
 .search-container {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   height: 20vh;
   justify-content: center;
+
+  .error-message {
+    color: rgb(168, 5, 5);
+    flex: 1 0 100%;
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+  }
 
   .search-input {
     background-color: #90060652;

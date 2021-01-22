@@ -1,5 +1,5 @@
 export interface WeatherData {
-  data: CityWeatherData[];
+  data: CityWeatherData;
   count: number;
 }
 
