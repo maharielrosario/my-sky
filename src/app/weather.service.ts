@@ -35,13 +35,17 @@ export class WeatherService {
 
   getWeather(
     inputValue: string,
-    inputType: string
+    inputType: string,
+    tempScale: string
   ): Observable<WeatherData | HTTPErrorData> {
     let fullAPIUrl: string;
     if (inputType === 'string') {
       fullAPIUrl = `${API_ROOT_URL}city=${inputValue}&key=${API_KEY}`;
     } else {
       fullAPIUrl = `${API_ROOT_URL}postal_code=${inputValue}&key=${API_KEY}`;
+    }
+    if (tempScale === 'Fahrenheit') {
+      fullAPIUrl = `${fullAPIUrl}&units=I`;
     }
     return this.http.get<WeatherData>(fullAPIUrl).pipe(
       map((resp) => {

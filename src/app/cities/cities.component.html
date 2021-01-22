@@ -18,9 +18,9 @@
           {{ weatherData.weather?.description }}
         </p>
         <p class="city-temperature-container">
-          <span class="city-temperature"> {{ weatherData.temp }} </span>
-          <span class="city-temperature-scale"> </span
-          ><span class="city-temperature-degree">&deg;</span>
+          {{ weatherData.temp }}&deg;{{
+            tempScale === "Fahrenheit" ? "F" : "C"
+          }}
         </p>
       </div>
     </div>
@@ -42,5 +42,8 @@
     <button type="button" class="enter-button" (click)="getWeather()">
       Enter
     </button>
+    <mat-slide-toggle (click)="updateTempScale()"
+      >{{ tempScale }}
+    </mat-slide-toggle>
   </div>
 </main>

@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -8,7 +7,7 @@
   background-image: url("https://images.pexels.com/photos/1046532/pexels-photo-1046532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-repeat: no-repeat;
   background-size: 100vw 60vh;
-  font-family: "Cormorant", serif;
+  font-family: "Titillium Web", sans-serif;
 }
 .welcome-msg {
   color: #fff;
@@ -42,14 +41,9 @@
     font-size: 1.4rem;
   }
   .city-temperature-container {
-    font-size: 2rem;
-    margin-top: 0;
-  }
-  .city-temperature-scale {
+    font-family: "Titillium Web", sans-serif;
     font-size: 1.5rem;
-  }
-  .city-temperature-degree {
-    font-size: 1.2rem;
+    margin-top: 0;
   }
 }
 
@@ -73,13 +67,14 @@
     border-radius: 5px;
     color: #fff;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     height: 50px;
     margin: auto 8px;
     text-align: center;
   }
   .search-input::placeholder {
     color: #fff;
+    font-size: 1.2rem;
     opacity: 0.6;
     text-align: center;
   }

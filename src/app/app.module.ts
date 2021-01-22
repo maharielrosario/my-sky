@@ -6,10 +6,18 @@ import { AppComponent } from './app.component';
 import { CitiesComponent } from './cities/cities.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalHTTPInterceptorService } from './global-httpinterceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [AppComponent, CitiesComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
