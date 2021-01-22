@@ -37,12 +37,12 @@
       id=""
       placeholder="Search your favorite city"
       [value]="searchValue"
-      (keyup)="updateSearchValue(searchInput.value)"
+      (keyup)="updateTheSearchValue(searchInput.value)"
     />
-    <button type="button" class="enter-button" (click)="getWeather()">
+    <button type="button" class="enter-button" (click)="getTheWeather()">
       Enter
     </button>
-    <mat-slide-toggle (click)="updateTempScale()"
+    <mat-slide-toggle (click)="updateTheTempScale()"
       >{{ tempScale }}
     </mat-slide-toggle>
   </div>

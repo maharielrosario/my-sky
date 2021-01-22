@@ -1,4 +1,14 @@
 <main class="container">
-  <app-cities [appName]="appName"></app-cities>
+  <app-cities
+    [appName]="appName"
+    [weatherData]="weatherData"
+    [searchValue]="searchValue"
+    [tempScale]="tempScale"
+    [error]="error"
+    (getWeather)="getWeather($event)"
+    (updateSearchValue)="updateSearchValue($event)"
+    (updateTempScale)="updateTempScale($event)"
+  ></app-cities>
+  <app-active-city-detail></app-active-city-detail>
 </main>
 <router-outlet></router-outlet>
