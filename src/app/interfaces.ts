@@ -1,9 +1,13 @@
-export interface WeatherData {
-  data: CityWeatherData;
-  count: number;
+export interface FullWeatherData {
+  cityName: string;
+  countryCode: string;
+  lat: number;
+  lon: number;
+  stateCode: string;
+  timezone: string;
+  data: [OneDayWeatherData];
 }
-
-export interface CityWeatherData {
+export interface OneDayWeatherData {
   rh: number;
   pod: string;
   lon: number;

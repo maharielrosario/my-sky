@@ -1,11 +1,11 @@
 <main class="container">
   <app-cities
     [appName]="appName"
-    [weatherData]="weatherData"
+    [fullWeatherData]="fullWeatherData"
     [searchValue]="searchValue"
     [tempScale]="tempScale"
     [error]="error"
-    (getWeather)="getWeather()"
+    (getFullWeather)="getFullWeather()"
     (updateSearchValue)="updateSearchValue($event)"
     (updateTempScale)="updateTempScale()"
   ></app-cities>

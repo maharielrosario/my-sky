@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { CityWeatherData, WeatherData, HTTPErrorData } from './interfaces';
+import {
+  HTTPErrorData,
+  FullWeatherData,
+  OneDayWeatherData,
+} from './interfaces';
 import { determineInputType, replaceSpacesForApi, fToC, cToF } from './util';
 import { WeatherService } from './weather.service';
 
@@ -10,14 +14,14 @@ import { WeatherService } from './weather.service';
 })
 export class AppComponent {
   appName = 'My Sky';
-  weatherData: CityWeatherData;
+  fullWeatherData: FullWeatherData;
   searchValue = '';
   tempScale = 'Celsius';
   error: string;
 
   constructor(private weatherService: WeatherService) {}
 
-  getWeather(): void {
+  getFullWeather(): void {
     if (this.error) {
       this.error = '';
     }
@@ -25,13 +29,17 @@ export class AppComponent {
       const apiInputValue = replaceSpacesForApi(this.searchValue);
       const inputType = determineInputType(this.searchValue);
       this.weatherService
-        .getWeather(apiInputValue, inputType, this.tempScale)
+        .getFullWeather(apiInputValue, inputType, this.tempScale)
         .subscribe(
-          (response: WeatherData) => {
-            const { data } = response;
-            this.weatherData = data[0];
-            const roundedTemp = this.weatherData.temp.toFixed();
-            this.weatherData.temp = parseInt(roundedTemp, 10);
+          (response: FullWeatherData) => {
+            this.fullWeatherData = response;
+            this.fullWeatherData.data.forEach((day: OneDayWeatherData) => {
+              let roundedTemp = day.temp.toFixed();
+              if (roundedTemp === '-0') {
+                roundedTemp = '0';
+              }
+              day.temp = parseInt(roundedTemp, 10);
+            });
             this.searchValue = '';
           },
           (error: HTTPErrorData) => {
@@ -47,13 +55,17 @@ export class AppComponent {
   }
   updateTempScale(): void {
     if (this.tempScale === 'Celsius') {
-      if (this.weatherData) {
-        this.weatherData.temp = cToF(this.weatherData.temp);
+      if (this.fullWeatherData) {
+        this.fullWeatherData.data.forEach((day) => {
+          day.temp = cToF(day.temp);
+        });
       }
       this.tempScale = 'Fahrenheit';
     } else {
-      if (this.weatherData) {
-        this.weatherData.temp = fToC(this.weatherData.temp);
+      if (this.fullWeatherData) {
+        this.fullWeatherData.data.forEach((day) => {
+          day.temp = fToC(day.temp);
+        });
       }
       this.tempScale = 'Celsius';
     }

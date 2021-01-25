@@ -1,6 +1,6 @@
 <main class="container">
-  <h1 *ngIf="!weatherData" class="welcome-msg">Welcome to {{ appName }}</h1>
-  <section *ngIf="weatherData" class="cities-container">
+  <h1 *ngIf="!fullWeatherData" class="welcome-msg">Welcome to {{ appName }}</h1>
+  <section *ngIf="fullWeatherData" class="cities-container">
     <div class="city-container">
       <div class="city-image-container is-inline-block">
         <img
@@ -11,14 +11,14 @@
       </div>
       <div class="city-details is-inline-block">
         <p class="city-name">
-          {{ weatherData.cityName }}, {{ weatherData.stateCode }},
-          {{ weatherData.countryCode }}
+          {{ fullWeatherData.cityName }}, {{ fullWeatherData.stateCode }},
+          {{ fullWeatherData.countryCode }}
         </p>
         <p class="city-weather">
-          {{ weatherData.weather?.description }}
+          {{ fullWeatherData.data[0].weather?.description }}
         </p>
         <p class="city-temperature-container">
-          {{ weatherData.temp }}&deg;{{
+          {{ fullWeatherData.data[0].temp }}&deg;{{
             tempScale === "Fahrenheit" ? "F" : "C"
           }}
         </p>

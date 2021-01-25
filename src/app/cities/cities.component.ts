@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CityWeatherData } from '../interfaces';
+import { FullWeatherData } from '../interfaces';
 
 @Component({
   selector: 'app-cities',
@@ -11,13 +11,14 @@ export class CitiesComponent {
   @Input() searchValue: string;
   @Input() tempScale: string;
   @Input() error: string;
-  @Input() weatherData: CityWeatherData;
-  @Output() getWeather: EventEmitter<CityWeatherData> = new EventEmitter();
+  @Input() fullWeatherData: FullWeatherData;
+  @Output()
+  getFullWeather: EventEmitter<FullWeatherData> = new EventEmitter();
   @Output() updateSearchValue: EventEmitter<string> = new EventEmitter();
   @Output() updateTempScale: EventEmitter<string> = new EventEmitter();
 
   getTheWeather(): void {
-    this.getWeather.emit(null);
+    this.getFullWeather.emit(null);
   }
   updateTheSearchValue(newSearchValue: string): void {
     this.updateSearchValue.emit(newSearchValue);

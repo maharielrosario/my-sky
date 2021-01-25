@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { API_KEY, API_ROOT_URL } from '../../private';
-import { WeatherData, HTTPErrorData } from './interfaces';
+import { API_KEY, API_5_DAY_ROOT_URL } from '../../private';
+import { FullWeatherData, HTTPErrorData } from './interfaces';
 import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class WeatherService {
     return throwError(error);
   }
 
-  convertToCamelCase(payload: WeatherData): WeatherData {
+  convertToCamelCase(payload: FullWeatherData): FullWeatherData {
     const makeCamelCase = (s: string): string =>
       s.replace(/([-_][a-z])/gi, (current) =>
         current.toUpperCase().replace('-', '').replace('_', '')
@@ -33,21 +33,21 @@ export class WeatherService {
     return payload;
   }
 
-  getWeather(
+  getFullWeather(
     inputValue: string,
     inputType: string,
     tempScale: string
-  ): Observable<WeatherData | HTTPErrorData> {
+  ): Observable<FullWeatherData | HTTPErrorData> {
     let fullAPIUrl: string;
     if (inputType === 'string') {
-      fullAPIUrl = `${API_ROOT_URL}city=${inputValue}&key=${API_KEY}`;
+      fullAPIUrl = `${API_5_DAY_ROOT_URL}city=${inputValue}&key=${API_KEY}&days=5`;
     } else {
-      fullAPIUrl = `${API_ROOT_URL}postal_code=${inputValue}&key=${API_KEY}`;
+      fullAPIUrl = `${API_5_DAY_ROOT_URL}postal_code=${inputValue}&key=${API_KEY}&days=5`;
     }
     if (tempScale === 'Fahrenheit') {
       fullAPIUrl = `${fullAPIUrl}&units=I`;
     }
-    return this.http.get<WeatherData>(fullAPIUrl).pipe(
+    return this.http.get<FullWeatherData>(fullAPIUrl).pipe(
       map((resp) => {
         const normalizedPayload = this.convertToCamelCase(resp);
         return normalizedPayload;
