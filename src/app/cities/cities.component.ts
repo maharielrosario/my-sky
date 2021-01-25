@@ -10,10 +10,11 @@ export class CitiesComponent {
   @Input() appName: string;
   @Input() searchValue: string;
   @Input() tempScale: string;
+  @Input() error: string;
   @Input() weatherData: CityWeatherData;
-  @Output() getWeather: EventEmitter = new EventEmitter();
-  @Output() updateSearchValue: EventEmitter = new EventEmitter();
-  @Output() updateTempScale: EventEmitter = new EventEmitter();
+  @Output() getWeather: EventEmitter<CityWeatherData> = new EventEmitter();
+  @Output() updateSearchValue: EventEmitter<string> = new EventEmitter();
+  @Output() updateTempScale: EventEmitter<string> = new EventEmitter();
 
   getTheWeather(): void {
     this.getWeather.emit(null);

@@ -5,10 +5,13 @@
     [searchValue]="searchValue"
     [tempScale]="tempScale"
     [error]="error"
-    (getWeather)="getWeather($event)"
+    (getWeather)="getWeather()"
     (updateSearchValue)="updateSearchValue($event)"
-    (updateTempScale)="updateTempScale($event)"
+    (updateTempScale)="updateTempScale()"
   ></app-cities>
-  <app-active-city-detail></app-active-city-detail>
+  <app-active-city-detail
+    [weatherData]="weatherData"
+    [tempScale]="tempScale"
+  ></app-active-city-detail>
 </main>
 <router-outlet></router-outlet>

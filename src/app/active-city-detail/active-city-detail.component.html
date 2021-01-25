@@ -1,0 +1,21 @@
+<section *ngIf="weatherData">
+  <h1>
+    {{ weatherData.cityName }}, {{ weatherData.stateCode }},
+    {{ weatherData.countryCode }}
+  </h1>
+  <p>
+    {{ time }}
+  </p>
+  <p>{{ formattedDate }}</p>
+  <p>{{ currentDay }}</p>
+  <img class="weather-icon" src="{{ iconUrl }}" />
+  <p>{{ weatherData.temp }}&deg;{{ tempScale === "Fahrenheit" ? "F" : "C" }}</p>
+  <div>
+    <p>Day 1: Temp High/ Temp Low Weather icon</p>
+    <p>Day 2: Temp High/ Temp Low Weather icon</p>
+    <p>Day 3: Temp High/ Temp Low Weather icon</p>
+    <p>Day 4: Temp High/ Temp Low Weather icon</p>
+    <p>Day 5: Temp High/ Temp Low Weather icon</p>
+  </div>
+</section>
+<p *ngIf="!weatherData">Please search for a city</p>

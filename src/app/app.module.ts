@@ -8,9 +8,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalHTTPInterceptorService } from './global-httpinterceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ActiveCityDetailComponent } from './active-city-detail/active-city-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, CitiesComponent],
+  declarations: [AppComponent, CitiesComponent, ActiveCityDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
