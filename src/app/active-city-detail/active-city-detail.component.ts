@@ -13,8 +13,8 @@ export class ActiveCityDetailComponent implements OnInit, OnChanges {
   currentDate: Date;
   dayOfWeek: string;
 
-  displayDayOfWeek(apiDate: Date): string {
-    return apiDate.toLocaleDateString(undefined, {
+  displayDayOfWeek(date: Date): string {
+    return date.toLocaleDateString(undefined, {
       weekday: 'long',
     });
   }
