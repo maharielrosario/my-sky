@@ -9,35 +9,40 @@ export interface FullWeatherData {
 }
 export interface OneDayWeatherData {
   rh: number;
-  pod: string;
-  lon: number;
+  appMaxTemp: number;
+  appMinTemp: number;
+  cloudsHi: number;
+  cloudsLow: number;
+  cloudsMid: number;
   pres: number;
-  timezone: string;
-  obTime: string;
-  countryCode: string;
-  clouds: string;
+  maxTemp: number;
+  minTemp: number;
+  moonPhase: number;
+  moonriseTs: number;
+  moonsetTs: number;
+  ozone: number;
+  moonPhaseLunation: number;
+  clouds: number;
   ts: number;
-  solarRad: number;
-  stateCode: string;
-  cityName: string;
+  windGustSpd: number;
+  maxDhi: null;
   windSpd: number;
+  pop: number;
   windCdirFull: string;
+  highTemp: number;
+  lowTemp: number;
   windCdir: string;
   slp: number;
   vis: number;
-  hAngle: number;
-  sunset: string;
-  dni: number;
+  snowDepth: number;
   dewpt: number;
   snow: number;
   uv: number;
   precip: number;
+  validDate: Date;
   windDir: number;
-  sunrise: string;
-  ghi: number;
-  dhi: number;
-  aqi: number;
-  lat: number;
+  sunriseTs: number;
+  sunsetTs: number;
   weather: {
     icon: string;
     code: number;
@@ -45,9 +50,6 @@ export interface OneDayWeatherData {
   };
   datetime: string;
   temp: number;
-  station: string;
-  elevAngle: number;
-  appTemp: number;
 }
 
 export interface HTTPErrorData {

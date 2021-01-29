@@ -34,13 +34,19 @@ export class AppComponent {
           (response: FullWeatherData) => {
             this.fullWeatherData = response;
             this.fullWeatherData.data.forEach((day: OneDayWeatherData) => {
-              let roundedTemp = day.temp.toFixed();
-              if (roundedTemp === '-0') {
-                roundedTemp = '0';
-              }
-              day.temp = parseInt(roundedTemp, 10);
+              const roundTemp = (initialTemp: number) => {
+                let roundedTemp = initialTemp.toFixed();
+                if (roundedTemp === '-0') {
+                  roundedTemp = '0';
+                }
+                return parseInt(roundedTemp, 10);
+              };
+              day.temp = roundTemp(day.temp);
+              day.lowTemp = roundTemp(day.lowTemp);
+              day.highTemp = roundTemp(day.highTemp);
             });
             this.searchValue = '';
+            console.log(this.fullWeatherData);
           },
           (error: HTTPErrorData) => {
             this.error = error.message;
@@ -58,6 +64,8 @@ export class AppComponent {
       if (this.fullWeatherData) {
         this.fullWeatherData.data.forEach((day) => {
           day.temp = cToF(day.temp);
+          day.lowTemp = cToF(day.lowTemp);
+          day.highTemp = cToF(day.highTemp);
         });
       }
       this.tempScale = 'Fahrenheit';
@@ -65,6 +73,8 @@ export class AppComponent {
       if (this.fullWeatherData) {
         this.fullWeatherData.data.forEach((day) => {
           day.temp = fToC(day.temp);
+          day.lowTemp = fToC(day.lowTemp);
+          day.highTemp = fToC(day.highTemp);
         });
       }
       this.tempScale = 'Celsius';
