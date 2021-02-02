@@ -37,22 +37,19 @@ export class WeatherService {
     return payload;
   }
 
-  normalizeApiDate(apiDate: string | Date, timezone: string): Date {
+  normalizeApiDate(apiDate: string | Date): Date {
     if (typeof apiDate === 'string') {
       if (apiDate.includes('-')) {
-        const date = new Date();
-        const todaysDate = new Intl.DateTimeFormat(undefined, {
-          timeZone: timezone,
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        }).format(date);
-
-        return new Date(todaysDate);
+        const formattedDateStr = apiDate.replace(/-/g, '/');
+        const todaysDate = new Date();
+        const formattedDate = new Date(formattedDateStr);
+        const year = formattedDate.getFullYear();
+        const month = formattedDate.getMonth();
+        const day = formattedDate.getDay();
+        const hours = todaysDate.getHours();
+        const mins = todaysDate.getMinutes();
+        const secs = todaysDate.getSeconds();
+        return new Date(year, month, day, hours, mins, secs);
       }
     } else {
       return apiDate;
@@ -79,10 +76,7 @@ export class WeatherService {
         normalizedPayload = this.convertToCamelCase(normalizedPayload);
         normalizedPayload.data.forEach(
           (day: OneDayWeatherData) =>
-            (day.validDate = this.normalizeApiDate(
-              day.validDate,
-              normalizedPayload.timezone
-            ))
+            (day.validDate = this.normalizeApiDate(day.validDate))
         );
         return normalizedPayload;
       }),

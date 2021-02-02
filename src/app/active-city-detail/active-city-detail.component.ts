@@ -19,12 +19,13 @@ export class ActiveCityDetailComponent implements OnInit, OnChanges {
     });
   }
 
-  displayCurrentDateFormatted(): string {
-    return this.currentDate.toLocaleDateString(undefined);
+  displayDateFormatted(date: Date): string {
+    return date.toLocaleDateString(undefined);
   }
 
   displayTime(date: Date): string {
     return date.toLocaleTimeString(undefined, {
+      timeZone: this.fullWeatherData.timezone,
       hour: '2-digit',
       minute: '2-digit',
     });
