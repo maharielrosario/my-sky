@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
-import { FullWeatherData } from '../interfaces';
+import { FullWeatherData, OneDayWeatherData } from '../interfaces';
+import moment from 'moment';
 
 @Component({
   selector: 'app-active-city-detail',
@@ -9,26 +10,45 @@ import { FullWeatherData } from '../interfaces';
 export class ActiveCityDetailComponent implements OnInit, OnChanges {
   @Input() tempScale: string;
   @Input() fullWeatherData: FullWeatherData;
-  todaysDate: Date;
-  currentDate: Date;
+  todaysDate: moment.Moment;
+  currentDate: OneDayWeatherData['validDate'];
   dayOfWeek: string;
+  time: string;
 
-  displayDayOfWeek(date: Date): string {
-    return date.toLocaleDateString(undefined, {
-      weekday: 'long',
-    });
+  displayDayOfWeek(date: string | moment.Moment): string {
+    if (!date) {
+      date = moment();
+    }
+    let day;
+    if (typeof date === 'string') {
+      day = moment(date).format('dddd');
+    } else {
+      day = date.format('dddd');
+    }
+    return day;
   }
 
-  displayDateFormatted(date: Date): string {
-    return date.toLocaleDateString(undefined);
+  displayDateFormatted(date: string | moment.Moment): string {
+    if (!date) {
+      date = moment();
+    }
+    let formattedDay;
+    if (typeof date === 'string') {
+      formattedDay = moment(date).format('MM/DD/YYYY');
+    } else {
+      formattedDay = date.format('MM/DD/YYYY');
+    }
+    return formattedDay;
   }
 
-  displayTime(date: Date): string {
-    return date.toLocaleTimeString(undefined, {
+  displayTime(): string {
+    const currentDate = new Date();
+    this.time = currentDate.toLocaleString('en-US', {
       timeZone: this.fullWeatherData.timezone,
-      hour: '2-digit',
-      minute: '2-digit',
+      hour: 'numeric',
+      minute: 'numeric',
     });
+    return this.time;
   }
 
   getWeatherIcon(iconCode: string): string {
@@ -36,13 +56,12 @@ export class ActiveCityDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.todaysDate = new Date();
-    this.currentDate = new Date();
+    this.todaysDate = moment();
     this.dayOfWeek = this.displayDayOfWeek(this.todaysDate);
   }
 
   ngOnChanges(): void {
-    this.currentDate = this.fullWeatherData.data[0].validDate;
+    this.currentDate = this.fullWeatherData?.data[0]?.validDate;
     this.dayOfWeek = this.displayDayOfWeek(this.currentDate);
   }
 }
