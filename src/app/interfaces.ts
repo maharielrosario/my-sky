@@ -1,3 +1,4 @@
+import moment from 'moment';
 export interface FullWeatherData {
   cityName: string;
   countryCode: string;
@@ -39,7 +40,7 @@ export interface OneDayWeatherData {
   snow: number;
   uv: number;
   precip: number;
-  validDate: Date;
+  validDate: moment.Moment | string;
   windDir: number;
   sunriseTs: number;
   sunsetTs: number;
