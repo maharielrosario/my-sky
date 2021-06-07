@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { API_KEY, API_5_DAY_ROOT_URL } from '../../private';
+import moment from 'moment';
 import {
   FullWeatherData,
   HTTPErrorData,
@@ -37,22 +38,13 @@ export class WeatherService {
     return payload;
   }
 
-  normalizeApiDate(apiDate: string | Date): Date {
+  normalizeApiDate(apiDate: string | moment.Moment): moment.Moment {
+    let date;
     if (typeof apiDate === 'string') {
-      if (apiDate.includes('-')) {
-        const formattedDateStr = apiDate.replace(/-/g, '/');
-        const todaysDate = new Date();
-        const formattedDate = new Date(formattedDateStr);
-        const year = formattedDate.getFullYear();
-        const month = formattedDate.getMonth();
-        const day = formattedDate.getDay();
-        const hours = todaysDate.getHours();
-        const mins = todaysDate.getMinutes();
-        const secs = todaysDate.getSeconds();
-        return new Date(year, month, day, hours, mins, secs);
-      }
+      date = moment(apiDate);
+      return date;
     } else {
-      return apiDate;
+      return date;
     }
   }
 
