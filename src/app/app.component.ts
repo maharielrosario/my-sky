@@ -46,7 +46,6 @@ export class AppComponent {
               day.highTemp = roundTemp(day.highTemp);
             });
             this.searchValue = '';
-            console.log(this.fullWeatherData);
           },
           (error: HTTPErrorData) => {
             this.error = error.message;
@@ -60,24 +59,22 @@ export class AppComponent {
     this.searchValue = newSearchValue;
   }
   updateTempScale(): void {
-    if (this.tempScale === 'Celsius') {
-      if (this.fullWeatherData) {
+    if (this.fullWeatherData) {
+      if (this.tempScale === 'Celsius') {
         this.fullWeatherData.data.forEach((day) => {
           day.temp = cToF(day.temp);
           day.lowTemp = cToF(day.lowTemp);
           day.highTemp = cToF(day.highTemp);
         });
-      }
-      this.tempScale = 'Fahrenheit';
-    } else {
-      if (this.fullWeatherData) {
+        this.tempScale = 'Fahrenheit';
+      } else {
         this.fullWeatherData.data.forEach((day) => {
           day.temp = fToC(day.temp);
           day.lowTemp = fToC(day.lowTemp);
           day.highTemp = fToC(day.highTemp);
         });
+        this.tempScale = 'Celsius';
       }
-      this.tempScale = 'Celsius';
     }
   }
 }
