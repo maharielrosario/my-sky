@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FullWeatherData } from '../interfaces';
 
 @Component({
-  selector: 'app-cities',
-  templateUrl: './cities.component.html',
-  styleUrls: ['./cities.component.scss'],
+  selector: 'cities-overview',
+  templateUrl: './cities-overview.component.html',
+  styleUrls: ['./cities-overview.component.scss'],
 })
-export class CitiesComponent {
+export class CitiesOverviewComponent {
   @Input() appName: string;
   @Input() searchValue: string;
   @Input() tempScale: string;

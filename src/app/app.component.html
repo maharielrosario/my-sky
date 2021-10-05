@@ -1,5 +1,5 @@
 <main class="container">
-  <app-cities
+  <cities-overview
     [appName]="appName"
     [fullWeatherData]="fullWeatherData"
     [searchValue]="searchValue"
@@ -8,10 +8,10 @@
     (getFullWeather)="getFullWeather()"
     (updateSearchValue)="updateSearchValue($event)"
     (updateTempScale)="updateTempScale()"
-  ></app-cities>
-  <app-active-city-detail
+  ></cities-overview>
+  <city-detail
     [fullWeatherData]="fullWeatherData"
     [tempScale]="tempScale"
-  ></app-active-city-detail>
+  ></city-detail>
 </main>
 <router-outlet></router-outlet>

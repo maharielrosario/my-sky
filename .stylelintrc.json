@@ -1,3 +1,8 @@
 {
-  "extends": ["stylelint-config-sass-guidelines", "stylelint-config-prettier"]
+  "extends": ["stylelint-config-recommended", "stylelint-scss"],
+  "plugins": ["stylelint-prettier", "stylelint-selector-bem-pattern"],
+  "rules": {
+    "plugin/selector-bem-pattern": {},
+    "prettier/prettier": true
+  }
 }

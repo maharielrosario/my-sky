@@ -3,11 +3,11 @@ import { FullWeatherData, OneDayWeatherData } from '../interfaces';
 import moment from 'moment';
 
 @Component({
-  selector: 'app-active-city-detail',
-  templateUrl: './active-city-detail.component.html',
-  styleUrls: ['./active-city-detail.component.scss'],
+  selector: 'city-detail',
+  templateUrl: './city-detail.component.html',
+  styleUrls: ['./city-detail.component.scss'],
 })
-export class ActiveCityDetailComponent implements OnInit, OnChanges {
+export class CityDetailComponent implements OnInit, OnChanges {
   @Input() tempScale: string;
   @Input() fullWeatherData: FullWeatherData;
   todaysDate: moment.Moment;

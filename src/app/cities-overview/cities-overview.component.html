@@ -1,0 +1,45 @@
+<main class="cities">
+  <h1 *ngIf="!fullWeatherData" class="cities__welcome-msg">Welcome to {{ appName }}</h1>
+  <section *ngIf="fullWeatherData" class="city">
+    <img
+      class="city__image"
+      src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
+      alt="A picture of the city searched for"
+    />
+    <div class="city__details">
+      <p class="city__details__name">
+        {{ fullWeatherData.cityName }}, {{ fullWeatherData.stateCode }},
+        {{ fullWeatherData.countryCode }}
+      </p>
+      <p class="city__details__weather">
+        {{ fullWeatherData.data[0].weather?.description }}
+      </p>
+      <p class="city__details__temp">
+        {{ fullWeatherData.data[0].temp }}&deg;{{
+          tempScale === "Fahrenheit" ? "F" : "C"
+        }}
+      </p>
+    </div>
+  </section>
+  <div class="search">
+    <p *ngIf="error === 'No city entered'" class="search__default-message">
+      Please enter a city
+    </p>
+    <input
+      #searchInput
+      type="text"
+      class="search__input"
+      name="search"
+      id=""
+      placeholder="Search your favorite city"
+      [value]="searchValue"
+      (keyup)="updateTheSearchValue(searchInput.value)"
+    />
+    <button type="button" class="search__submit-button" (click)="getTheWeather()">
+      Enter
+    </button>
+    <mat-slide-toggle (click)="updateTheTempScale()"
+      >{{ tempScale }}
+    </mat-slide-toggle>
+  </div>
+</main>

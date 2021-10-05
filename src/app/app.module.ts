@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CitiesComponent } from './cities/cities.component';
+import { CitiesOverviewComponent } from './cities-overview/cities-overview.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GlobalHTTPInterceptorService } from './global-httpinterceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ActiveCityDetailComponent } from './active-city-detail/active-city-detail.component';
+import { CityDetailComponent } from './city-detail/city-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, CitiesComponent, ActiveCityDetailComponent],
+  declarations: [AppComponent, CitiesOverviewComponent, CityDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActiveCityDetailComponent } from './active-city-detail.component';
+import { CitiesOverviewComponent } from './cities-overview.component';
 
-describe('ActiveCityDetailComponent', () => {
-  let component: ActiveCityDetailComponent;
-  let fixture: ComponentFixture<ActiveCityDetailComponent>;
+describe('CitiesOverviewComponent', () => {
+  let component: CitiesOverviewComponent;
+  let fixture: ComponentFixture<CitiesOverviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActiveCityDetailComponent ]
+      declarations: [ CitiesOverviewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActiveCityDetailComponent);
+    fixture = TestBed.createComponent(CitiesOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

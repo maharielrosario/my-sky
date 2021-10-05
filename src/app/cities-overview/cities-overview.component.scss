@@ -3,13 +3,13 @@
   box-sizing: border-box;
 }
 
-.container {
+.cities {
   background-image: url("https://images.pexels.com/photos/1046532/pexels-photo-1046532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-repeat: no-repeat;
-  background-size: 100vw 60vh;
+  background-size: 100%;
   font-family: "Titillium Web", sans-serif;
 }
-.welcome-msg {
+.cities__welcome-msg {
   color: #fff;
   margin: 0;
   text-align: center;
