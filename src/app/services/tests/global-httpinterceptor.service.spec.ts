@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GlobalHTTPInterceptorService } from './global-httpinterceptor.service';
+import { GlobalHTTPInterceptorService } from '../global-httpinterceptor.service';
 
 describe('GlobalHTTPInterceptorService', () => {
   let service: GlobalHTTPInterceptorService;

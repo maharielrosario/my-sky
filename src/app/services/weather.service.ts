@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { API_KEY, API_5_DAY_ROOT_URL } from '../../private';
+import { API_KEY, API_5_DAY_ROOT_URL } from '../../../private';
 import moment from 'moment';
 import {
   FullWeatherData,
   HTTPErrorData,
   OneDayWeatherData,
-} from './interfaces';
+} from '../interfaces';
 import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
