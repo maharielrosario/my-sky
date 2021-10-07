@@ -1,5 +1,6 @@
-<main class="container">
+<main class="my-sky">
   <cities-overview
+    class="my-sky__cities"
     [appName]="appName"
     [fullWeatherData]="fullWeatherData"
     [searchValue]="searchValue"
@@ -10,8 +11,10 @@
     (updateTempScale)="updateTempScale()"
   ></cities-overview>
   <city-detail
+    class="my-sky__city-detail"
     [fullWeatherData]="fullWeatherData"
     [tempScale]="tempScale"
   ></city-detail>
+  <navbar class="my-sky__navbar"></navbar>
 </main>
 <router-outlet></router-outlet>

@@ -5,7 +5,7 @@ import {
   OneDayWeatherData,
 } from './interfaces';
 import { determineInputType, replaceSpacesForApi, fToC, cToF } from './util';
-import { WeatherService } from './weather.service';
+import { WeatherService } from './services/weather.service';
 
 @Component({
   selector: 'app-root',
