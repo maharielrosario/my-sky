@@ -1,3 +1,22 @@
-.container {
+.my-sky {
   display: grid;
+  height: 100vh;
+  place-content: center;
+  grid-template-rows: 300px auto;
+  grid-template-columns: 75px 300px 700px;
+  grid-template-areas:
+    "navbar cities-overview cities-overview"
+    "navbar city-detail .";
+
+  .my-sky__cities {
+    grid-area: cities-overview;
+  }
+
+  .my-sky__city-detail {
+    grid-area: city-detail;
+  }
+
+  .my-sky__navbar {
+    grid-area: navbar;
+  }
 }
