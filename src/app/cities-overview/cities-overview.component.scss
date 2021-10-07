@@ -8,61 +8,67 @@
   background-repeat: no-repeat;
   background-size: 100%;
   font-family: "Titillium Web", sans-serif;
-}
-.cities__welcome-msg {
-  color: #fff;
-  margin: 0;
-  text-align: center;
-}
-.cities-container {
-  align-items: center;
-  backdrop-filter: blur(3px);
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  height: 40vh;
+  flex-direction: column;
   justify-content: space-evenly;
+
+  &.cities--displayed {
+    align-items: center;
+  }
+
+  .cities__welcome-msg {
+    color: #fff;
+    margin: 0;
+    text-align: center;
+  }
+  .cities-container {
+    align-items: center;
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-wrap: wrap;
+    height: 40vh;
+    justify-content: space-evenly;
+  }
+  .city-container {
+    align-items: center;
+    display: flex;
+  }
+
+  .city-image {
+    border-radius: 100px;
+    height: 150px;
+    width: 150px;
+  }
+
+  .city-details {
+    color: #fff;
+    margin-left: 16px;
+
+    .city-name {
+      font-size: 1.4rem;
+    }
+    .city-temperature-container {
+      font-family: "Titillium Web", sans-serif;
+      font-size: 1.5rem;
+      margin-top: 0;
+    }
+  }
 }
-.city-container {
+
+.search {
   align-items: center;
   display: flex;
-}
-
-.city-image {
-  border-radius: 100px;
-  height: 150px;
-  width: 150px;
-}
-
-.city-details {
-  color: #fff;
-  margin-left: 16px;
-
-  .city-name {
-    font-size: 1.4rem;
-  }
-  .city-temperature-container {
-    font-family: "Titillium Web", sans-serif;
-    font-size: 1.5rem;
-    margin-top: 0;
-  }
-}
-
-.search-container {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  height: 20vh;
   justify-content: center;
 
-  .error-message {
+  .search__default {
     color: rgb(168, 5, 5);
-    flex: 1 0 100%;
     font-size: 20px;
     font-style: italic;
     text-align: center;
   }
 
-  .search-input {
+  .search__input {
     background-color: #90060652;
     border-radius: 5px;
     color: #fff;
@@ -72,21 +78,17 @@
     margin: auto 8px;
     text-align: center;
   }
-  .search-input::placeholder {
+  .search__input::placeholder {
     color: #fff;
     font-size: 1.2rem;
     opacity: 0.6;
     text-align: center;
   }
-  .enter-button {
+  .search__submit {
     background-color: #14ed34a8;
     border-radius: 5px;
     font-size: 1.1rem;
     height: 50px;
     margin: auto 8px;
   }
-}
-
-.is-inline-block {
-  display: inline-block;
 }

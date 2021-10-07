@@ -1,6 +1,8 @@
-<main class="cities">
-  <h1 *ngIf="!fullWeatherData" class="cities__welcome-msg">Welcome to {{ appName }}</h1>
-  <section *ngIf="fullWeatherData" class="city">
+<section class="cities" [ngClass]="{ 'cities--displayed': fullWeatherData }">
+  <h1 *ngIf="!fullWeatherData" class="cities__welcome-msg">
+    Welcome to {{ appName }}
+  </h1>
+  <div *ngIf="fullWeatherData" class="city">
     <img
       class="city__image"
       src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
@@ -20,9 +22,9 @@
         }}
       </p>
     </div>
-  </section>
+  </div>
   <div class="search">
-    <p *ngIf="error === 'No city entered'" class="search__default-message">
+    <p *ngIf="error === 'No city entered'" class="search__default">
       Please enter a city
     </p>
     <input
@@ -35,11 +37,16 @@
       [value]="searchValue"
       (keyup)="updateTheSearchValue(searchInput.value)"
     />
-    <button type="button" class="search__submit-button" (click)="getTheWeather()">
+    <button
+      type="button"
+      class="search__submit"
+      (click)="getTheWeather()"
+      [disabled]="fullWeatherData && !searchValue"
+    >
       Enter
     </button>
     <mat-slide-toggle (click)="updateTheTempScale()"
       >{{ tempScale }}
     </mat-slide-toggle>
   </div>
-</main>
+</section>
