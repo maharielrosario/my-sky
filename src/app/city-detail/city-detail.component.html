@@ -1,34 +1,45 @@
-<section *ngIf="fullWeatherData">
-  <h1>
-    {{ fullWeatherData.cityName }}, {{ fullWeatherData.stateCode }},
-    {{ fullWeatherData.countryCode }}
-  </h1>
-  <p>
-    {{ displayTime() }}
-  </p>
-  <p>
-    {{ displayDateFormatted(currentDate) }}
-  </p>
-  <p>{{ displayDayOfWeek(currentDate) }}</p>
-  <img
-    class="weather-icon"
-    alt="weather icon"
-    src="{{ getWeatherIcon(fullWeatherData.data[0].weather.icon) }}"
-  />
-  <p>
-    {{ fullWeatherData.data[0].temp }}&deg;{{
-      tempScale === "Fahrenheit" ? "F" : "C"
-    }}
-  </p>
-  <div *ngFor="let day of fullWeatherData.data | slice: 1">
-    <p>
-      {{ displayDayOfWeek(day.validDate) }} {{ day.highTemp }} {{ day.lowTemp }}
+<section
+  class="city-detail"
+  [ngClass]="{ 'city-detail__default': !fullWeatherData }"
+>
+  <ng-container *ngIf="fullWeatherData">
+    <h1 class="city-detail__location">
+      {{ fullWeatherData.cityName }}, {{ fullWeatherData.stateCode }},
+      {{ fullWeatherData.countryCode }}
+    </h1>
+    <p class="city-detail__time">
+      {{ displayTime() }}
     </p>
+    <p class="city-detail__date--formatted">
+      {{ displayDateFormatted(currentDate) }}
+    </p>
+    <p class="city-detail__date--day">{{ displayDayOfWeek(currentDate) }}</p>
     <img
-      class="weather-icon"
-      src="{{ getWeatherIcon(day.weather.icon) }}"
+      class="city-detail__icon city-detail__icon--weather-today"
       alt="weather icon"
+      src="{{ getWeatherIcon(fullWeatherData.data[0].weather.icon) }}"
     />
-  </div>
+    <p class="city-detail__temp-scale">
+      {{ fullWeatherData.data[0].temp }}&deg;{{
+        tempScale === "Fahrenheit" ? "F" : "C"
+      }}
+    </p>
+    <div
+      class="city-detail__weather-overview"
+      *ngFor="let day of fullWeatherData.data | slice: 1"
+    >
+      <p class="city-detail__weather-overview--forecast">
+        {{ displayDayOfWeek(day.validDate) }} {{ day.highTemp }}
+        {{ day.lowTemp }}
+      </p>
+      <img
+        class="city-detail__icon city-detail__weather-overview--icon"
+        src="{{ getWeatherIcon(day.weather.icon) }}"
+        alt="weather icon"
+      />
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!fullWeatherData">
+    <p>Please search for a city</p>
+  </ng-container>
 </section>
-<p *ngIf="!fullWeatherData">Please search for a city</p>

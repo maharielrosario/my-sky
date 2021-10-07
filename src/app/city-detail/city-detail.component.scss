@@ -1,0 +1,35 @@
+.city-detail {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(202, 90, 39);
+  align-items: center;
+  //   .city-detail__location {
+  //   }
+  //   .city-detail__time {
+  //   }
+  //   .city-detail__date--formatted {
+  //   }
+  //   .city-detail__date--day {
+  //   }
+  .city-detail__icon {
+    width: 25px;
+    height: 25px;
+    //     .city-detail__icon--weather-today {
+    //     }
+    //     .city-detail__weather-overview--icon {
+    //     }
+  }
+  //   .city-detail__temp-scale {
+  //   }
+  .city-detail__weather-overview {
+    display: flex;
+    align-items: center;
+    // .city-detail__weather-overview--forecast {
+    // }
+  }
+  &.city-detail__default {
+    min-height: 250px;
+    justify-content: center;
+    align-items: center;
+  }
+}
