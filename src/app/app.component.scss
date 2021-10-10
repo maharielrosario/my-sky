@@ -2,7 +2,7 @@
   display: grid;
   height: 100vh;
   place-content: center;
-  grid-template-rows: 300px auto;
+  grid-template-rows: auto auto;
   grid-template-columns: 75px 300px 700px;
   grid-template-areas:
     "navbar cities-overview cities-overview"
@@ -10,10 +10,12 @@
 
   .my-sky__cities {
     grid-area: cities-overview;
+    min-height: 250px;
   }
 
   .my-sky__city-detail {
     grid-area: city-detail;
+    min-height: 600px;
   }
 
   .my-sky__navbar {
