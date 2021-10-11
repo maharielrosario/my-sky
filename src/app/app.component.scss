@@ -1,21 +1,22 @@
 .my-sky {
   display: grid;
-  height: 100vh;
+  height: 100%;
   place-content: center;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto;
   grid-template-columns: 75px 300px 700px;
   grid-template-areas:
     "navbar cities-overview cities-overview"
-    "navbar city-detail .";
+    "navbar city-details .";
 
   .my-sky__cities {
     grid-area: cities-overview;
-    min-height: 250px;
+    // min-height: 250px;
   }
 
-  .my-sky__city-detail {
-    grid-area: city-detail;
-    min-height: 600px;
+  .my-sky__city-details {
+    grid-area: city-details;
+    // min-height: 400px;
+    // height: 100%;
   }
 
   .my-sky__navbar {

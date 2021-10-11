@@ -1,39 +1,39 @@
 <section
-  class="city-detail"
-  [ngClass]="{ 'city-detail__default': !fullWeatherData }"
+  class="city-details"
+  [ngClass]="{ 'city-details__default': !fullWeatherData }"
 >
   <ng-container *ngIf="fullWeatherData">
-    <h1 class="city-detail__location">
+    <h1 class="city-details__location">
       {{ fullWeatherData.cityName }}, {{ fullWeatherData.stateCode }},
       {{ fullWeatherData.countryCode }}
     </h1>
-    <p class="city-detail__time">
+    <p class="city-details__time">
       {{ displayTime() }}
     </p>
-    <p class="city-detail__date--formatted">
+    <p class="city-details__date--formatted">
       {{ displayDateFormatted(currentDate) }}
     </p>
-    <p class="city-detail__date--day">{{ displayDayOfWeek(currentDate) }}</p>
+    <p class="city-details__date--day">{{ displayDayOfWeek(currentDate) }}</p>
     <img
-      class="city-detail__icon city-detail__icon--weather-today"
+      class="city-details__icon city-details__icon--weather-today"
       alt="weather icon"
       src="{{ getWeatherIcon(fullWeatherData.data[0].weather.icon) }}"
     />
-    <p class="city-detail__temp-scale">
+    <p class="city-details__temp-scale">
       {{ fullWeatherData.data[0].temp }}&deg;{{
         tempScale === "Fahrenheit" ? "F" : "C"
       }}
     </p>
     <div
-      class="city-detail__weather-overview"
+      class="city-details__forecast"
       *ngFor="let day of fullWeatherData.data | slice: 1"
     >
-      <p class="city-detail__weather-overview--forecast">
+      <p class="city-details__forecast__overview">
         {{ displayDayOfWeek(day.validDate) }} {{ day.highTemp }}
         {{ day.lowTemp }}
       </p>
       <img
-        class="city-detail__icon city-detail__weather-overview--icon"
+        class="city-details__icon city-details__icon--forecast"
         src="{{ getWeatherIcon(day.weather.icon) }}"
         alt="weather icon"
       />

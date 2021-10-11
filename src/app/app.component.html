@@ -10,11 +10,11 @@
     (updateSearchValue)="updateSearchValue($event)"
     (updateTempScale)="updateTempScale()"
   ></cities-overview>
-  <city-detail
-    class="my-sky__city-detail"
+  <city-details
+    class="my-sky__city-details"
     [fullWeatherData]="fullWeatherData"
     [tempScale]="tempScale"
-  ></city-detail>
+  ></city-details>
   <navbar class="my-sky__navbar"></navbar>
 </main>
 <router-outlet></router-outlet>
