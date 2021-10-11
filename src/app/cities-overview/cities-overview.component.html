@@ -8,15 +8,15 @@
       src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
       alt="A picture of the city searched for"
     />
-    <div class="city__details">
-      <p class="city__details__name">
+    <div class="city__location">
+      <p>
         {{ fullWeatherData.cityName }}, {{ fullWeatherData.stateCode }},
         {{ fullWeatherData.countryCode }}
       </p>
-      <p class="city__details__weather">
+      <p class="city__weather">
         {{ fullWeatherData.data[0].weather?.description }}
       </p>
-      <p class="city__details__temp">
+      <p class="city__temp">
         {{ fullWeatherData.data[0].temp }}&deg;{{
           tempScale === "Fahrenheit" ? "F" : "C"
         }}

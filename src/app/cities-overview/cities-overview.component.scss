@@ -9,9 +9,12 @@
   background-size: 100%;
   font-family: "Titillium Web", sans-serif;
   height: 100%;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  gap: 20px;
+  padding: 32px 0;
 
   &.cities--displayed {
     align-items: center;
@@ -22,37 +25,43 @@
     margin: 0;
     text-align: center;
   }
-  .cities-container {
-    align-items: center;
-    backdrop-filter: blur(3px);
-    display: flex;
-    flex-wrap: wrap;
-    height: 40vh;
-    justify-content: space-evenly;
-  }
-  .city-container {
+
+  .city {
     align-items: center;
     display: flex;
+    color: #fff;
+    // margin-left: 16px;
+    gap: 20px;
   }
 
-  .city-image {
+  .city__image {
     border-radius: 100px;
     height: 150px;
     width: 150px;
   }
 
-  .city-details {
-    color: #fff;
-    margin-left: 16px;
+  .city__location {
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    p {
+      margin: 4px 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .city__weather {
+    font-size: 0.9rem;
+  }
 
-    .city-name {
-      font-size: 1.4rem;
-    }
-    .city-temperature-container {
-      font-family: "Titillium Web", sans-serif;
-      font-size: 1.5rem;
-      margin-top: 0;
-    }
+  .city__temp {
+    font-family: "Titillium Web", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 0;
   }
 }
 
