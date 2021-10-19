@@ -11,6 +11,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WeatherChartComponent } from './weather-chart/weather-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { WeatherChartComponent } from './weather-chart/weather-chart.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    NgChartsModule,
   ],
   providers: [
     {
