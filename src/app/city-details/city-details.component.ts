@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { FullWeatherData, OneDayWeatherData } from '../interfaces';
 import moment from 'moment';
+import { displayDayOfWeek } from '../util';
 
 @Component({
   selector: 'city-details',
@@ -14,20 +15,7 @@ export class CityDetailsComponent implements OnInit, OnChanges {
   currentDate: OneDayWeatherData['validDate'];
   dayOfWeek: string;
   time: string;
-
-  displayDayOfWeek(date: string | moment.Moment): string {
-    if (!date) {
-      date = moment();
-    }
-    let day;
-    if (typeof date === 'string') {
-      day = moment(date).format('dddd');
-    } else {
-      day = date.format('dddd');
-    }
-    return day;
-  }
-
+  displayDayOfWeek = displayDayOfWeek;
   displayDateFormatted(date: string | moment.Moment): string {
     if (!date) {
       date = moment();
@@ -57,11 +45,11 @@ export class CityDetailsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.todaysDate = moment();
-    this.dayOfWeek = this.displayDayOfWeek(this.todaysDate);
+    this.dayOfWeek = displayDayOfWeek(this.todaysDate);
   }
 
   ngOnChanges(): void {
     this.currentDate = this.fullWeatherData?.data[0]?.validDate;
-    this.dayOfWeek = this.displayDayOfWeek(this.currentDate);
+    this.dayOfWeek = displayDayOfWeek(this.currentDate);
   }
 }

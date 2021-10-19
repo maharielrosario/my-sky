@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const determineInputType = (inputValue: string): string => {
   let inputType = 'string';
   const newInputValue = parseInt(inputValue, 10);
@@ -19,4 +21,17 @@ export const fToC = (fTemp: number): number => {
   const newTemp = ((fTemp - 32) * 5) / 9;
   const newTempNoDecimals = newTemp.toFixed();
   return parseInt(newTempNoDecimals, 10);
+};
+
+export const displayDayOfWeek = (date: string | moment.Moment): string => {
+  if (!date) {
+    date = moment();
+  }
+  let day;
+  if (typeof date === 'string') {
+    day = moment(date).format('dddd');
+  } else {
+    day = date.format('dddd');
+  }
+  return day;
 };
