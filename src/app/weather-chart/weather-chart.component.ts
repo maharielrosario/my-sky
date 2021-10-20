@@ -1,8 +1,14 @@
-import { Component, Input, OnChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { FullWeatherData } from '../interfaces';
-import { displayDayOfWeek } from '../util';
+import { displayDayOfWeek, deepEqual } from '../util';
 
 @Component({
   selector: 'weather-chart',
@@ -53,20 +59,24 @@ export class WeatherChartComponent implements OnChanges {
   public chartLegend = false;
   public chartType: ChartType = 'line';
   public chartPlugins = [];
-  ngOnChanges(): void {
-    if (this.fullWeatherData) {
-      if (
-        this.chartDatasets[0].data.length > 0 &&
-        this.chartLabels.length > 0
-      ) {
-        this.chartDatasets[0].data = [];
-        this.chartLabels = [];
-      }
-      this.fullWeatherData.data.forEach((day) => {
-        this.chartDatasets[0].data.push(day.temp);
-        this.chartLabels.push(displayDayOfWeek(day.datetime));
-      });
-      this.baseChart.update();
+  updateWeatherChart() {
+    if (this.chartDatasets[0].data.length > 0 && this.chartLabels.length > 0) {
+      this.chartDatasets[0].data = [];
+      this.chartLabels = [];
+    }
+    this.fullWeatherData.data.forEach((day) => {
+      this.chartDatasets[0].data.push(day.temp);
+      this.chartLabels.push(displayDayOfWeek(day.datetime));
+    });
+    this.baseChart.update();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    const hasWeatherDataChanged = !deepEqual(
+      changes.fullWeatherData?.currentValue,
+      changes.fullWeatherData?.previousValue
+    );
+    if (this.fullWeatherData && hasWeatherDataChanged) {
+      this.updateWeatherChart();
     }
   }
 }

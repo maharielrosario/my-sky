@@ -6,7 +6,7 @@ export interface FullWeatherData {
   lon: number;
   stateCode: string;
   timezone: string;
-  data: [OneDayWeatherData];
+  data: OneDayWeatherData[];
 }
 export interface OneDayWeatherData {
   rh: number;

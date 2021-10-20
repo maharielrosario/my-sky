@@ -16,7 +16,7 @@ export class AppComponent {
   appName = 'My Sky';
   fullWeatherData: FullWeatherData;
   searchValue = '';
-  tempScale = 'Celsius';
+  tempScale: 'Celsius' | 'Fahrenheit' = 'Celsius';
   error: string;
 
   constructor(private weatherService: WeatherService) {}
@@ -60,19 +60,27 @@ export class AppComponent {
   }
   updateTempScale(): void {
     if (this.fullWeatherData) {
+      const updatedData = this.fullWeatherData.data.map((day) => {
+        if (this.tempScale === 'Celsius') {
+          return {
+            ...day,
+            temp: cToF(day.temp),
+            lowTemp: cToF(day.lowTemp),
+            highTemp: cToF(day.highTemp),
+          };
+        } else {
+          return {
+            ...day,
+            temp: fToC(day.temp),
+            lowTemp: fToC(day.lowTemp),
+            highTemp: fToC(day.highTemp),
+          };
+        }
+      });
+      this.fullWeatherData = { ...this.fullWeatherData, data: updatedData };
       if (this.tempScale === 'Celsius') {
-        this.fullWeatherData.data.forEach((day) => {
-          day.temp = cToF(day.temp);
-          day.lowTemp = cToF(day.lowTemp);
-          day.highTemp = cToF(day.highTemp);
-        });
         this.tempScale = 'Fahrenheit';
       } else {
-        this.fullWeatherData.data.forEach((day) => {
-          day.temp = fToC(day.temp);
-          day.lowTemp = fToC(day.lowTemp);
-          day.highTemp = fToC(day.highTemp);
-        });
         this.tempScale = 'Celsius';
       }
     }
