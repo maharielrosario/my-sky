@@ -7,16 +7,14 @@
   grid-template-areas:
     "navbar cities-overview cities-overview"
     "navbar city-details weather-chart";
+  background: linear-gradient(90deg, #ffd89b, #19547b);
 
   .my-sky__cities {
     grid-area: cities-overview;
-    // min-height: 250px;
   }
 
   .my-sky__city-details {
     grid-area: city-details;
-    // min-height: 400px;
-    // height: 100%;
   }
 
   .my-sky__navbar {

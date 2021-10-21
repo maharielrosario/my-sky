@@ -1,7 +1,4 @@
 <section class="cities" [ngClass]="{ 'cities--displayed': fullWeatherData }">
-  <h1 *ngIf="!fullWeatherData" class="cities__welcome-msg">
-    Welcome to {{ appName }}
-  </h1>
   <div *ngIf="fullWeatherData" class="city">
     <img
       class="city__image"
@@ -23,29 +20,31 @@
       </p>
     </div>
   </div>
-  <div class="search">
-    <p *ngIf="error === 'No city entered'" class="search__default">
-      Please enter a city
-    </p>
-    <input
-      #searchInput
-      type="text"
-      class="search__input"
-      name="search"
-      id=""
-      placeholder="Search your favorite city"
-      [value]="searchValue"
-      (keyup)="updateTheSearchValue(searchInput.value)"
-    />
-    <button
-      type="button"
-      class="search__submit"
-      (click)="getTheWeather()"
-      [disabled]="fullWeatherData && !searchValue"
-    >
-      Enter
-    </button>
-    <mat-slide-toggle (click)="updateTheTempScale()"
+  <div class="cities--row">
+    <div class="search">
+      <p *ngIf="error === 'No city entered'" class="search__default">
+        Please enter a city
+      </p>
+      <input
+        #searchInput
+        type="text"
+        class="search__input"
+        name="search"
+        id=""
+        placeholder="Search your favorite city"
+        [value]="searchValue"
+        (keyup)="updateTheSearchValue(searchInput.value)"
+      />
+      <button
+        type="button"
+        class="search__submit"
+        (click)="getTheWeather()"
+        [disabled]="!searchValue"
+      >
+        Enter
+      </button>
+    </div>
+    <mat-slide-toggle class="temp__toggle" (click)="updateTheTempScale()"
       >{{ tempScale }}
     </mat-slide-toggle>
   </div>
