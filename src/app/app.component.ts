@@ -78,11 +78,11 @@ export class AppComponent {
         }
       });
       this.fullWeatherData = { ...this.fullWeatherData, data: updatedData };
-      if (this.tempScale === 'Celsius') {
-        this.tempScale = 'Fahrenheit';
-      } else {
-        this.tempScale = 'Celsius';
-      }
+    }
+    if (this.tempScale === 'Celsius') {
+      this.tempScale = 'Fahrenheit';
+    } else {
+      this.tempScale = 'Celsius';
     }
   }
 }
