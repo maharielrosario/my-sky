@@ -1,22 +1,15 @@
 .city-details {
   display: flex;
   flex-direction: column;
-  // min-height: 400px;
   height: 100%;
-  background-color: rgb(202, 90, 39);
   align-items: center;
-  // .city-details__location {
-  //   margin-top: 0px;
-  //   margin-bottom: 4px;
-  // }
-  // .city-details__time,
-  // .city-details__date--formatted,
-  // .city-details__date--day {
-  //   margin-top: 4px;
-  //   margin-bottom: 4px;
-  // }
+  background-color: #32567bf5;
+  color: #fff;
+  box-shadow: 0px -2px 4px 1px #000;
+
   p {
     margin: 8px 0;
+    font-size: 20px;
     &:first-of-type {
       margin-top: 0px;
     }
@@ -31,10 +24,6 @@
     }
     &:last-of-type {
       margin-bottom: 0px;
-    }
-    .city-details__forecast__overview {
-    }
-    .city-details__icon--forecast {
     }
   }
 

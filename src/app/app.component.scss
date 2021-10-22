@@ -3,11 +3,14 @@
   height: 100%;
   place-content: center;
   grid-template-rows: auto;
-  grid-template-columns: 75px 300px 700px;
+  grid-template-columns: 50px minmax(300px, 500px) minmax(700px, 1000px);
   grid-template-areas:
     "navbar cities-overview cities-overview"
     "navbar city-details weather-chart";
-  background: linear-gradient(90deg, #ffd89b, #19547b);
+  //possible gradient background to use
+  // background: linear-gradient(90deg, #f3aa38, #0f2433);
+  background-color: #0f2433;
+  padding: 0 60px 0;
 
   .my-sky__cities {
     grid-area: cities-overview;
