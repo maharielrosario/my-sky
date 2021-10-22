@@ -20,19 +20,32 @@ export class WeatherChartComponent implements OnChanges {
   @ViewChild(BaseChartDirective) baseChart;
   public chartOptions: ChartOptions = {
     responsive: true,
+    font: {
+      size: 30,
+    },
     plugins: {
       title: {
         display: true,
         text: "This Week's Weather",
+        color: '#fa9457',
+      },
+      legend: {
+        labels: {
+          font: {
+            size: 40,
+          },
+        },
       },
     },
     scales: {
       x: {
         display: true,
-        title: {
-          display: true,
-          text: 'Days of the week',
-        },
+        // grid: {
+        //   color: '#fa9457',
+        // },
+        // ticks: {
+        //   color: '#fa9457',
+        // },
       },
       y: {
         display: true,
@@ -40,15 +53,24 @@ export class WeatherChartComponent implements OnChanges {
           display: true,
           text: 'Temperature',
         },
+        // min: 0,
+        // max: 100,
+        // grid: {
+        //   color: '#fa9457',
+        // },
+        ticks: {
+          color: '#fa9457',
+          stepSize: 5,
+        },
       },
     },
   };
   public chartDatasets: ChartDataset[] = [
     {
       data: [],
-      backgroundColor: 'rgba(255,0,0,0.3)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      backgroundColor: '#fa9457',
+      borderColor: '#fa9457',
+      pointBackgroundColor: '#fff',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)',
