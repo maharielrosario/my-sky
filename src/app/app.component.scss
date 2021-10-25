@@ -3,7 +3,7 @@
   height: 100%;
   place-content: center;
   grid-template-rows: auto;
-  grid-template-columns: 50px minmax(300px, 500px) minmax(700px, 1000px);
+  grid-template-columns: 75px minmax(300px, 500px) minmax(700px, 1000px);
   grid-template-areas:
     "navbar cities-overview cities-overview"
     "navbar city-details weather-chart";
