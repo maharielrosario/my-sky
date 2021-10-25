@@ -1,8 +1,9 @@
 <section class="cities" [ngClass]="{ 'cities--displayed': fullWeatherData }">
   <div *ngIf="fullWeatherData" class="city">
+    <!-- stock image until api is set up -->
     <img
       class="city__image"
-      src="http://www.ntimages.net/Italy/Rome/thumbnails/forum2palatine.jpg"
+      [src]="imgSrc"
       alt="A picture of the city searched for"
     />
     <div class="city__location">
@@ -30,7 +31,6 @@
         type="text"
         class="search__input"
         name="search"
-        id=""
         placeholder="Search your favorite city"
         [value]="searchValue"
         (keyup)="updateTheSearchValue(searchInput.value)"

@@ -16,6 +16,8 @@ export class CitiesOverviewComponent {
   getFullWeather: EventEmitter<FullWeatherData> = new EventEmitter();
   @Output() updateSearchValue: EventEmitter<string> = new EventEmitter();
   @Output() updateTempScale: EventEmitter<string> = new EventEmitter();
+  imgSrc =
+    'https://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80';
 
   getTheWeather(): void {
     this.getFullWeather.emit(null);
