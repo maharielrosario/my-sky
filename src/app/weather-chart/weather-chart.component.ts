@@ -27,40 +27,53 @@ export class WeatherChartComponent implements OnChanges {
       title: {
         display: true,
         text: "This Week's Weather",
-        color: '#fa9457',
+        padding: 20,
+        color: '#fff',
+        font: {
+          size: 25,
+        },
       },
       legend: {
         labels: {
           font: {
-            size: 40,
+            size: 60,
           },
         },
       },
     },
     scales: {
       x: {
-        display: true,
-        // grid: {
-        //   color: '#fa9457',
-        // },
-        // ticks: {
-        //   color: '#fa9457',
-        // },
+        grid: {
+          color: '#fff',
+        },
+        ticks: {
+          color: '#fff',
+          font: {
+            size: 20,
+          },
+          padding: 10,
+        },
       },
       y: {
-        display: true,
         title: {
           display: true,
           text: 'Temperature',
+          color: '#fff',
+          font: {
+            size: 20,
+          },
         },
         // min: 0,
         // max: 100,
-        // grid: {
-        //   color: '#fa9457',
-        // },
+        grid: {
+          color: '#fff',
+        },
         ticks: {
-          color: '#fa9457',
+          color: '#fff',
           stepSize: 5,
+          font: {
+            size: 20,
+          },
         },
       },
     },
