@@ -26,7 +26,7 @@ describe('WeatherService', () => {
     httpTestingController.verify();
   });
 
-  fit('getWeather should return weather data', () => {
+  it('getWeather should return weather data', () => {
     let actualWeatherData: FullWeatherData | HTTPErrorData | undefined;
     const inputValue = '21742';
     const inputType = 'number';
