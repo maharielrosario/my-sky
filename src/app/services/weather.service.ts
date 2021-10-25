@@ -38,20 +38,14 @@ export class WeatherService {
     return payload;
   }
 
-  normalizeApiDate(apiDate: string | moment.Moment): moment.Moment {
-    let date;
-    if (typeof apiDate === 'string') {
-      date = moment(apiDate);
-      return date;
-    } else {
-      return date;
-    }
+  normalizeApiDate(apiDate: string): string {
+    return moment(apiDate).format();
   }
 
   getFullWeather(
     inputValue: string,
     inputType: string,
-    tempScale: string
+    tempScale?: string
   ): Observable<FullWeatherData | HTTPErrorData> {
     let fullAPIUrl: string;
     if (inputType === 'string') {

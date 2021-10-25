@@ -40,7 +40,7 @@ export interface OneDayWeatherData {
   snow: number;
   uv: number;
   precip: number;
-  validDate: moment.Moment | string;
+  validDate: string;
   windDir: number;
   sunriseTs: number;
   sunsetTs: number;
