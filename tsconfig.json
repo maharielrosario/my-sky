@@ -10,10 +10,14 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2022",
     "module": "es2020",
-    "lib": ["esnext", "dom"],
-    "allowSyntheticDefaultImports": true
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "strictTemplates": true
