@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+} from '@angular/core';
 import { FullWeatherData } from '../interfaces';
 
 @Component({
@@ -16,6 +22,8 @@ export class CitiesOverviewComponent {
   getFullWeather: EventEmitter<FullWeatherData> = new EventEmitter();
   @Output() updateSearchValue: EventEmitter<string> = new EventEmitter();
   @Output() updateTempScale: EventEmitter<string> = new EventEmitter();
+  @ViewChild('searchInput') searchInput: HTMLInputElement;
+
   imgSrc =
     'https://images.unsplash.com/photo-1512850183-6d7990f42385?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80';
 

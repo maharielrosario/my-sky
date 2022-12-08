@@ -27,7 +27,7 @@ export const displayDayOfWeek = (date: string | moment.Moment): string => {
   if (!date) {
     date = moment();
   }
-  let day;
+  let day: string;
   if (typeof date === 'string') {
     day = moment(date).format('dddd');
   } else {
