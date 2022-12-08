@@ -70,7 +70,7 @@ export class WeatherChartComponent implements OnChanges {
         },
         ticks: {
           color: '#fff',
-          stepSize: 5,
+          stepSize: 10,
           font: {
             size: 20,
           },

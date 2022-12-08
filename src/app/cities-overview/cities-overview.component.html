@@ -21,9 +21,9 @@
       </p>
     </div>
   </div>
-  <div class="cities--row">
-    <div class="search">
-      <p *ngIf="error === 'No city entered'" class="search__default">
+  <div class="actions">
+    <div class="actions__search">
+      <p *ngIf="error === 'No city entered'" class="search__msg">
         Please enter a city
       </p>
       <input
@@ -44,7 +44,9 @@
         Enter
       </button>
     </div>
-    <mat-slide-toggle class="temp__toggle" (click)="updateTheTempScale()"
+    <mat-slide-toggle
+      class="actions__temp-toggle"
+      (click)="updateTheTempScale()"
       >{{ tempScale }}
     </mat-slide-toggle>
   </div>
