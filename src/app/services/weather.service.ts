@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { API_KEY, API_5_DAY_ROOT_URL } from '../../../private';
 import moment from 'moment';
 import {
   FullWeatherData,
@@ -9,6 +8,9 @@ import {
   OneDayWeatherData,
 } from '../interfaces';
 import { catchError, map } from 'rxjs/operators';
+
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -49,9 +51,9 @@ export class WeatherService {
   ): Observable<FullWeatherData | HTTPErrorData> {
     let fullAPIUrl: string;
     if (inputType === 'string') {
-      fullAPIUrl = `${API_5_DAY_ROOT_URL}city=${inputValue}&key=${API_KEY}&days=5`;
+      fullAPIUrl = `${environment.weatherBitBaseUrl}?city=${inputValue}&key=${environment.weatherBitApiKey}`;
     } else {
-      fullAPIUrl = `${API_5_DAY_ROOT_URL}postal_code=${inputValue}&key=${API_KEY}&days=5`;
+      fullAPIUrl = `${environment.weatherBitBaseUrl}?postal_code=${inputValue}&key=${environment.weatherBitApiKey}`;
     }
     if (tempScale === 'Fahrenheit') {
       fullAPIUrl = `${fullAPIUrl}&units=I`;
