@@ -23,7 +23,7 @@ For the JS and TS, The Angular style guide was used.
 - SCSS
 - HTML5
 - Node.js
-  
+- Chart.js
 
 ## Features
 
