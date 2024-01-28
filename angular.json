@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-sky:build"
+            "buildTarget": "my-sky:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-sky:build:production"
+              "buildTarget": "my-sky:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-sky:build"
+            "buildTarget": "my-sky:build"
           }
         },
         "test": {
