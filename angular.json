@@ -129,7 +129,6 @@
       }
     }
   },
-  "defaultProject": "my-sky",
   "cli": {
     "analytics": "ddf95a54-8a29-46a3-ac7d-5ceadcb6272e"
   }
