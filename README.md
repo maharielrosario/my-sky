@@ -1,19 +1,17 @@
 # My Sky
 
-This is a weather app that allows you to find a city's weather information so you can make important decisions from that data. 
+My Sky is a weather app  that allows you to find a city's weather information anywhere on the planet.
+
+## Why create it?
 
 
-## Motivation
+My Sky was created to be part of my personal portfolio of apps to show potential clients and employers. It highlights my UI design skills and shows that I have foundational understanding of how Angular works.
 
-My Sky was created to be part of my personal portfolio of apps to show potential clients and employers. As a new developer, having a portfolio is a great way to show your skills and so I created My Sky to showcase what I am capable of making. This particular application helped me gain a deeper understanding of how Angular and TypeScript work together in the development process.  
-
-## Build status
-
-CI/CD will be added once this application is live.
 
 ## Code style
 
-I am following the recommended best practices from ESLint, Angular, and TypeScript.
+For styling. the BEM methodology was implemented. 
+For the JS and TS, The Angular style guide was used.
  
 ## Screenshots
 
@@ -21,20 +19,21 @@ Screenshots and/or videos will be added here soon.
 
 ## Tech/framework used
 
-- Angular v11
-- TypeScript v4.0
+- Angular v17
+- TypeScript
 - SCSS
 - HTML5
+- Node.js
+  
 
 ## Features
 
-- Search weather data of any city from any country
-- Intuitive user interface to showcase weather details as easy as possible
-- More coming soon...
+- Search weather data anywhere on the planet
+- Metric and Imperial units are supported
 
 ## API Reference
 
-Current Weather Data API- https://www.weatherbit.io/api/weather-current
+[https://www.weatherbit.io/](https://www.weatherbit.io/)
 
 ## Credits
 Design inspiration - https://miro.medium.com/max/4000/1*frncrxfVpyJNvHkUdKxt5g.jpeg
