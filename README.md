@@ -4,9 +4,7 @@ My Sky is a weather app  that allows you to find a city's weather information an
 
 ## Why create it?
 
-
 My Sky was created to be part of my personal portfolio of apps to show potential clients and employers. It highlights my UI design skills and shows that I have foundational understanding of how Angular works.
-
 
 ## Code style
 
@@ -15,7 +13,8 @@ For the JS and TS, The Angular style guide was used.
  
 ## Screenshots
 
-Screenshots and/or videos will be added here soon.
+![Screenshot_20240128_173206](https://github.com/MasterMahariel/my-sky/assets/12755283/9d0a842a-e450-448b-b7be-2a51b2975e81)
+
 
 ## Tech/framework used
 
